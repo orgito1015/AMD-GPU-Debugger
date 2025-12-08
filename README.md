@@ -40,38 +40,8 @@ The debugger is split into several layers:
 
 A rough data flow:
 
-```text
-       +----------------------------+
-       |         User CLI           |
-       |  (hdb run / attach / step) |
-       +--------------+-------------+
-                      |
-                      v
-         +------------+-------------+
-         |       Debugger Core      |
-         |  - libdrm + DRM          |
-         |  - Debugfs (regs2)       |
-         |  - ACO SPIR-V compile    |
-         +------------+-------------+
-                      |
-      +---------------+----------------+
-      |                                |
-      v                                v
-+-----+------+                +--------+--------+
-| Command    | PM4 packets    | Trap Handler   |
-| Submission +--------------->+ (shader)       |
-| (IB in VRAM)                | - save VGPRs   |
-+------------+                | - save SGPRs   |
-                              | - save PC/VCC  |
-                              +--------+-------+
-                                       |
-                                       v
-                           +-----------+-----------+
-                           | CPU reads trap buffer |
-                           | - halt wave via SQCMD |
-                           | - inspect/modify      |
-                           | - resume wave         |
-                           +-----------------------+
+![Debugger Architecture](image.png)
+
 ```
 
 ---
