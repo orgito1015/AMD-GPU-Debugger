@@ -42,8 +42,6 @@ A rough data flow:
 
 ![Debugger Architecture](image.png)
 
-```
-
 ---
 
 ## 1. Device & Context Setup
