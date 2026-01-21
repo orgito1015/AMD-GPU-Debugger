@@ -156,7 +156,6 @@ int32_t bo_alloc(amdgpu_t* dev, size_t size, uint32_t domain,
 }
 
 void bo_upload(amdgpu_bo_t* bo, const void* data, size_t size) {
-    // Bounds checking is performed below
     HDB_ASSERT(bo->host_addr != NULL, "BO is not CPU-mapped");
     HDB_ASSERT(size <= bo->size, "Upload size exceeds BO size");
     

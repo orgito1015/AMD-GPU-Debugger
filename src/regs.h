@@ -141,8 +141,6 @@ typedef struct amdgpu_debugfs_regs2_iocdata_v2 {
 /**
  * debugfs regs2 IOCTL magic numbers.
  */
-#define AMDGPU_DEBUGFS_REGS2_IOC_SET_STATE \
-    _IOW(0x20, 0x1, struct amdgpu_debugfs_regs2_iocdata)
 #define AMDGPU_DEBUGFS_REGS2_IOC_SET_STATE_V2 \
     _IOW(0x20, 0x2, struct amdgpu_debugfs_regs2_iocdata_v2)
 
