@@ -19,17 +19,26 @@ static int32_t hdb_ioctl(int fd, unsigned long request, void* arg) {
  * 
  * DANGER: These are hardware-specific MMIO offsets.
  * DANGER: Different RDNA3 ASICs may have different offsets.
- * DANGER: Verify against actual hardware or UMR database.
  * 
- * NOTE: These are example offsets based on typical RDNA3 register maps.
- * They may need adjustment for specific ASICs.
+ * NOTE: These are PLACEHOLDER offsets for initial implementation.
+ * FIXME: These values must be verified against actual RDNA3 hardware
+ *        documentation or extracted from UMR register database before
+ *        use on real hardware. Using incorrect offsets WILL cause:
+ *        - GPU hangs or resets
+ *        - Writes to wrong registers
+ *        - System instability
+ * 
+ * Recommended approach:
+ * 1. Use UMR (AMD's register dumper) to extract correct offsets
+ * 2. Cross-reference with Linux kernel amdgpu driver sources
+ * 3. Test on actual RDNA3 hardware with debugfs validation
  */
 const uint64_t gc_11_regs_offsets[REG_MAX] = {
-    [REG_SQ_SHADER_TBA_LO] = 0x2E00,  // Example offset
-    [REG_SQ_SHADER_TBA_HI] = 0x2E01,  // Example offset
-    [REG_SQ_SHADER_TMA_LO] = 0x2E02,  // Example offset
-    [REG_SQ_SHADER_TMA_HI] = 0x2E03,  // Example offset
-    [REG_SQ_CMD]           = 0x2D00,  // Example offset
+    [REG_SQ_SHADER_TBA_LO] = 0x2E00,  // PLACEHOLDER - MUST VERIFY
+    [REG_SQ_SHADER_TBA_HI] = 0x2E01,  // PLACEHOLDER - MUST VERIFY
+    [REG_SQ_SHADER_TMA_LO] = 0x2E02,  // PLACEHOLDER - MUST VERIFY
+    [REG_SQ_SHADER_TMA_HI] = 0x2E03,  // PLACEHOLDER - MUST VERIFY
+    [REG_SQ_CMD]           = 0x2D00,  // PLACEHOLDER - MUST VERIFY
 };
 
 /**

@@ -99,9 +99,18 @@ int32_t amdgpu_device_init(const char* device_path, amdgpu_t* dev) {
 
     // Initialize GC register base addresses
     // DANGER: Hardcoded for typical RDNA3 layout
-    // DANGER: May need adjustment per-ASIC
+    // 
+    // FIXME: These are PLACEHOLDER values that must be determined from
+    //        actual hardware before use. The correct base addresses can be
+    //        obtained via:
+    //        1. amdgpu_query_hw_ip_info() for IP-specific base addresses
+    //        2. Reading from kernel amdgpu driver sources
+    //        3. UMR register database for specific ASIC
+    // 
+    // Using incorrect base addresses WILL cause register access to fail
+    // or write to wrong locations, potentially hanging the GPU.
     uint64_t gc_regs_base_addr[16] = {0};
-    gc_regs_base_addr[0] = 0x0; // GC base (example)
+    gc_regs_base_addr[0] = 0x0; // PLACEHOLDER - GC base (MUST VERIFY)
 
     // Fill output structure
     *dev = (amdgpu_t){
